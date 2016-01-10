@@ -49,9 +49,13 @@ averages <- aggregate(x=list(steps=data$steps), by=list(interval=data$interval),
 
 #####1.Make a time series plot (i.e. 𝚝𝚢𝚙𝚎 = "𝚕") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
+png("./instructions_fig/seriesplot.png", width=480, height= 480)
+
 ggplot(data=averages, aes(x=interval, y=steps)) + geom_line(color = "green") + ggtitle("Avg. No. of steps per day")
 
 ![](./instructions_fig/seriesplot.png)
+
+dev.off()
 
 #####2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -108,9 +112,13 @@ summary(data_without_NA)
 
 stepPerDay_without_NA <- tapply(data_without_NA$steps, data_without_NA$date,FUN = sum )
 
+png("./instructions_fig/Histogram2.png", width=480, height= 480)
+
 qplot(stepPerDay_without_NA, binwidth=500, xlab="total number of steps per day", fill=I("green"),col=I("green"))
 
 ![](./instructions_fig/Histogram2.png)
+
+dev.off()
 
 stepsPerDayMean_without_NA <- mean(stepPerDay_without_NA , na.rm = TRUE)
 
