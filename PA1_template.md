@@ -45,7 +45,7 @@ averages <- aggregate(x=list(steps=data$steps), by=list(interval=data$interval),
 
 ggplot(data=averages, aes(x=interval, y=steps)) + geom_line(color = "green") + ggtitle("Avg. No. of steps per day")
 
-
+##![](./instructions_fig/seriesplot.png)
 
 ####2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
