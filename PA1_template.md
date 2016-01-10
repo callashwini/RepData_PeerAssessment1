@@ -1,7 +1,6 @@
 # Reproducible Research: Peer Assessment 1
 
 ## Loading and preprocessing the data
-install.packages("rmarkdown")
 
 setwd("./GitHub/RepData_PeerAssessment1")
 
@@ -28,15 +27,15 @@ stepPerDay <- tapply(data$steps, data$date,FUN = sum,  na.rm = TRUE  )
 
 qplot(stepPerDay, binwidth=500, xlab="total number of steps per day", fill=I("green"),col=I("green"))
 
-![](/Users/ashwini/GitHub/RepData_PeerAssessment1/instructions_fig/Histogram.png)
+![](./instructions_fig/Histogram.png)
 
 stepsPerDayMean <- mean(stepPerDay , na.rm = TRUE)
 
 stepsPerDayMedian <- median(stepPerDay, na.rm = TRUE)
-
-print(stepsPerDayMean)
-
-print(stepsPerDayMedian)
+```
+stepsPerDayMean:  9354.23
+stepsPerDayMedian: 10395
+```
 
 ## What is the average daily activity pattern?
 
@@ -46,11 +45,17 @@ averages <- aggregate(x=list(steps=data$steps), by=list(interval=data$interval),
 
 ggplot(data=averages, aes(x=interval, y=steps)) + geom_line(color = "green") + ggtitle("Avg. No. of steps per day")
 
-![](/Users/ashwini/GitHub/RepData_PeerAssessment1/instructions_fig/seriesplot.png)
+
 
 ####2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
 averages[which.max(averages$steps),]
+```
+       interval    steps
+104      835       206.1698
+
+```
+
 
 ## Imputing missing values
 
